@@ -1,24 +1,38 @@
 <nav ng-include="'partials/nav.html'"></nav>
 
 <div class="row">
-  <div class="col-md-3 employeeMenu">
+  <div class="col-md-3 sideMenu">
       
-      <button>New Employee</button>
-      <br><br>
-      <button>Support Team</button><br>
-      <button>Design Team</button><br>
-      <button>Development Team</button>
+    <a href="#/add-employee">New Employee</a>
+    <br><br>
 
-    </div>
+    <button>All Employees</button><br>
+    <button>Support Team</button><br>
+    <button>Design Team</button><br>
+    <button>Development Team</button>
 
-    <div class="col-md-9 employeeList">
+  </div>
 
-      <div ng-repeat="emp in employees" class="listItem">
-        <span class="employeeName">{{ emp.FirstName }} {{ emp.LastName }} </span>
-        <span class="employeeEmail">{{ emp.EmailE }}</span>
-        <span class="employeePhone">{{ emp.PhoneE }}</span>
-        <span class="employeeUser">{{ emp.Username }}</span>        
-      </div>
+  <div class="col-md-9 listItem">
 
-    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID #</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="emp in employees | orderBy: 'EmployeeId'">
+          <td>{{ emp.EmployeeId }}</td>
+          <td>{{ emp.FirstNameE }}</td>
+          <td>{{ emp.LastNameE }}</td>
+          <td>{{ emp.DepartmentName }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
