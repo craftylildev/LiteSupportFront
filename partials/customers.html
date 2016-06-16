@@ -5,20 +5,34 @@
     
     <div class="col-md-3 ticketMenu">
       
-      <button>New Customer</button>
+      <a href="#/add-customer">New Customer</a>
 
     </div>
 
     <div class="col-md-9 ticketList">
       
-      <div ng-repeat="cus in customers" class="listItem">
-        <span class="ticketCompany">{{ cus.Company }}</span>
-        <span class="ticketTitle">{{ cus.FirstNameC }} {{ cus.LastNameC }}</span>
-        <span class="ticketCompany">{{ cus.URL }}</span>
-
-      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>URL</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cus in customers | orderBy: 'Company'">
+            <td>{{ cus.Company }}</td>
+            <td>{{ cus.URL }}</td>
+            <td>{{ cus.FirstNameC }}</td>
+            <td>{{ cus.LastNameC }}</td>
+          </tr>
+        </tbody>
+      </table>
     
     </div>
 
   </div>
 </div>
+
+

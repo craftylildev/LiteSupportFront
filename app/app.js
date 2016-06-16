@@ -20,6 +20,10 @@ LiteSupport.config(['$routeProvider',
         templateUrl: 'partials/customers.html',
         controller: 'CustomerController'
       })
+      .when('/add-customer', {
+        templateUrl: 'partials/add-customer.html',
+        controller: 'AddCustomerController'
+      })
       .when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginController'
