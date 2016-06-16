@@ -1,0 +1,24 @@
+<nav ng-include="'partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-3 employeeMenu">
+      
+      <button>New Employee</button>
+      <br><br>
+      <button>Support Team</button><br>
+      <button>Design Team</button><br>
+      <button>Development Team</button>
+
+    </div>
+
+    <div class="col-md-9 employeeList">
+
+      <div ng-repeat="emp in employees" class="listItem">
+        <span class="employeeName">{{ emp.FirstName }} {{ emp.LastName }} </span>
+        <span class="employeeEmail">{{ emp.EmailE }}</span>
+        <span class="employeePhone">{{ emp.PhoneE }}</span>
+        <span class="employeeUser">{{ emp.Username }}</span>        
+      </div>
+
+    </div>
+</div>
