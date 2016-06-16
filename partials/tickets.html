@@ -1,0 +1,29 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 ticketMenu">
+      
+      <button>New Ticket</button>
+      <br><br>
+      <button>All Tickets</button><br>
+      <button>Open Tickets</button><br>
+      <button>Closed Tickets</button>
+
+    </div>
+
+    <div class="col-md-9 ticketList">
+      
+      <div ng-repeat="t in tickets" class="listItem">
+        <span class="ticketNumber"># {{ t.TicketId }}</span>
+        <span class="ticketTitle">{{ t.Title }}</span>
+        <span class="ticketCompany">{{ t.Company }}</span>
+        <span class="ticketDate">{{ t.DateCreated }}</span>
+        <span class="ticketPriority">{{ t.Priority }}</span>        
+      </div>
+    
+    </div>
+
+  </div>
+</div>

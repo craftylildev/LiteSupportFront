@@ -1,0 +1,24 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 ticketMenu">
+      
+      <button>New Customer</button>
+
+    </div>
+
+    <div class="col-md-9 ticketList">
+      
+      <div ng-repeat="cus in customers" class="listItem">
+        <span class="ticketCompany">{{ cus.Company }}</span>
+        <span class="ticketTitle">{{ cus.FirstNameC }} {{ cus.LastNameC }}</span>
+        <span class="ticketCompany">{{ cus.URL }}</span>
+
+      </div>
+    
+    </div>
+
+  </div>
+</div>

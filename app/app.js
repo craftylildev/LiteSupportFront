@@ -9,12 +9,20 @@ LiteSupport.config(['$routeProvider',
   function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main.html',
-        controller: 'MainController'
+        templateUrl: 'partials/tickets.html',
+        controller: 'TicketController'
       })
-      .when('/register', {
-        templateUrl: 'partials/Register.html',
-        controller: 'RegisterController'
+      .when('/employees', {
+        templateUrl: 'partials/employees.html',
+        controller: 'EmployeeController'
+      })
+      .when('/customers', {
+        templateUrl: 'partials/customers.html',
+        controller: 'CustomerController'
+      })
+      .when('/login', {
+        templateUrl: 'partials/login.html',
+        controller: 'LoginController'
       })
       .otherwise({
         redirectTo: "/"
