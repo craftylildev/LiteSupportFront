@@ -1,0 +1,61 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-employee.html'"></div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-1 addItem">
+      <h3>Edit Employee</h3>
+      <div class="form-group">
+        <input type="text" ng-model="emp.FirstNameE" class="form-control" placeholder="First Name">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="emp.LastNameE" class="form-control" placeholder="Last Name">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="emp.Username" class="form-control" placeholder="Username">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="emp.EmailE" class="form-control" placeholder="Email Address">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="emp.PhoneE" class="form-control" placeholder="Phone Number">
+      </div>
+
+<!--       <select id="selectDepartment"
+              ng-model="emp.DepartmentId">
+        <option value="" selected disabled="disabled">Department</option>
+        <option value="1">Support</option>
+        <option value="2">Design</option>
+        <option value="3">Development</option>
+      </select>  
+      <br> -->
+
+      <label>Department: </label>
+
+      <input ng-model="emp.DepartmentId" type="radio" name="dept-type" value="1"> Support
+      <input ng-model="emp.DepartmentId" type="radio" name="dept-type" value="2"> Design
+      <input ng-model="emp.DepartmentId" type="radio" name="dept-type" value="3"> Development
+
+
+
+
+
+      <button ng-click="saveEmployee(emp.EmployeeId)">Save Changes</button>
+      <div>
+        <br>
+        <a href="#/employees">< Back to Employee List</a><br><br>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

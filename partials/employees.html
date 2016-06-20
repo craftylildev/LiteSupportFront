@@ -1,24 +1,33 @@
-<nav ng-include="'partials/nav.html'"></nav>
+<nav ng-include="'/partials/nav.html'"></nav>
 
 <div class="row">
-  <div class="col-md-3 employeeMenu">
-      
-      <button>New Employee</button>
-      <br><br>
-      <button>Support Team</button><br>
-      <button>Design Team</button><br>
-      <button>Development Team</button>
-
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-employee.html'"></div>
     </div>
 
-    <div class="col-md-9 employeeList">
+    <div class="col-md-9 listItem">
 
-      <div ng-repeat="emp in employees" class="listItem">
-        <span class="employeeName">{{ emp.FirstName }} {{ emp.LastName }} </span>
-        <span class="employeeEmail">{{ emp.EmailE }}</span>
-        <span class="employeePhone">{{ emp.PhoneE }}</span>
-        <span class="employeeUser">{{ emp.Username }}</span>        
-      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID #</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="emp in employees | orderBy: 'EmployeeId'">
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.EmployeeId }}</a></td>
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.FirstNameE }}</a></td>
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.LastNameE }}</a></td>
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.DepartmentName }}</a></td>
+          </tr>
+        </tbody>
+      </table>
 
     </div>
+  </div>
 </div>

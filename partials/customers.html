@@ -3,20 +3,32 @@
 <div class="row">
   <div class="col-md-12">
     
-    <div class="col-md-3 ticketMenu">
-      
-      <button>New Customer</button>
-
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-customer.html'"></div>
     </div>
 
-    <div class="col-md-9 ticketList">
+    <div class="col-md-9 listItem">
       
-      <div ng-repeat="cus in customers" class="listItem">
-        <span class="ticketCompany">{{ cus.Company }}</span>
-        <span class="ticketTitle">{{ cus.FirstNameC }} {{ cus.LastNameC }}</span>
-        <span class="ticketCompany">{{ cus.URL }}</span>
-
-      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID #</th>
+            <th>Company</th>
+            <th>URL</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cus in customers | orderBy: 'Company'">
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.CustomerId }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.Company }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.URL }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.FirstNameC }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.LastNameC }}</a></td>
+          </tr>
+        </tbody>
+      </table>
     
     </div>
 
