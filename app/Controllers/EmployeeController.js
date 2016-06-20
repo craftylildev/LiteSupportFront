@@ -40,38 +40,61 @@ LiteSupport.controller('EmployeeController', [
 
     // view employee details
     $scope.detailEmployee = function (id) {
-      console.log(id);
+      // console.log(id);
       $http({
         method: 'GET',
         url:`http://localhost:5000/api/Employee/${id}`
       })
       .success( function(emp) {
-        $scope.$parent.emp = emp[0];        
-        console.log("$scope.$parent.emp", $scope.$parent.emp[0]);
-        // console.log("emp", emp);
+        $scope.$parent.emp = emp[0];
       })
       .then(function() {
         $location.path("/details-employee")
       })
     }
 
-    // // edit employee details
-    // $scope.editEmployee = function (id) {
-    //    console.log("id",id);
-    //    $http({
-    //       method: 'GET',
-    //       url:`http://localhost:5000/api/Employee/${id}`
-    //     })
-    //   .success( function(emp) {
-    //        // console.log("emp", emp);
-    //       $scope.$parent.emp = emp;        
-    //   })
-    //   .then(function() {
-    //       $location.path("/edit-employee")
-    //   })
-    // }
+    // edit employee details
+    $scope.editEmployee = function (id) {
+       console.log("id",id);
+       $http({
+          method: 'GET',
+          url:`http://localhost:5000/api/Employee/${id}`
+        })
+      .success( function(emp) {
+           // console.log("emp", emp);
+          $scope.$parent.emp = emp[0];        
+      })
+      .then(function() {
+          $location.path("/edit-employee")
+      })
+    }
+
+    // save changes to edit employee
+  $scope.saveEmployee = function (id) {
+      // console.log("id", id);
+      $http({
+        url:`http://localhost:5000/api/Employee/${id}`,
+        method: 'PUT',
+        data: JSON.stringify({
+            EmployeeId: $scope.emp.EmployeeId,
+            FirstNameE: $scope.emp.FirstNameE,
+            LastNameE: $scope.emp.LastNameE,
+            Username: $scope.emp.Username,
+            EmailE: $scope.emp.EmailE,
+            PhoneE: $scope.emp.PhoneE,
+            DepartmentId: $scope.emp.DepartmentId
+          })
+      })
+      .success( function(emp) {
+          $scope.$parent.emp = emp;        
+      })
+      .then(function() {
+         $location.path("/employees")
+      })
+    };
 
 
+//         headers: { "Content-Type" : "application/json"},
 
 
   }
