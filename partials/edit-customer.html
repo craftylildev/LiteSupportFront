@@ -1,0 +1,44 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-employee.html'"></div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-1 editItem">
+      <h3>Edit Customer</h3>
+      <div class="form-group">
+        <input type="text" ng-model="cus.FirstNameC" class="form-control" placeholder="First Name">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="cus.LastNameC" class="form-control" placeholder="Last Name">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="cus.Company" class="form-control" placeholder="Company Name">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="cus.URL" class="form-control" placeholder="URL / Website">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="cus.PhoneC" class="form-control" placeholder="Phone Number">
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="email" ng-model="cus.EmailC" class="form-control" placeholder="Email Address">
+      </div>
+
+      <button ng-click="saveCustomer(cus.CustomerId)">Save Changes</button>
+      <div class="backBtn">
+        <br>
+        <a href="#/customers">< Back to Customer List</a><br><br>
+      </div>
+    </div>
+
+  </div>
+</div>

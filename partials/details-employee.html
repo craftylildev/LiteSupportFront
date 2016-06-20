@@ -1,0 +1,29 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-employee.html'"></div>
+    </div>
+    <div class="col-md-9 detailItem">
+
+        <h3>Employee ID: #{{ emp.EmployeeId }}</h3>
+        <ul>  
+          <li><span>Name: </span>{{ $parent.emp.FirstNameE }} {{ emp.LastNameE }}</li>
+          <li><span>Username: </span>{{ emp.Username }}</li>
+          <li><span>Email: </span>{{ emp.EmailE }}</li>
+          <li><span>Phone: </span>{{ emp.PhoneE }}</li>
+          <li><span>Department: </span>{{ emp.DepartmentName }}</li>
+        </ul>
+    
+        <button ng-click="editEmployee(emp.EmployeeId)">Edit Employee</button>
+
+        <div class="backBtn">
+        <br>
+        <a href="#/employees">< Back to Employee List</a><br><br>
+      </div>
+    </div>
+
+  </div>
+</div>

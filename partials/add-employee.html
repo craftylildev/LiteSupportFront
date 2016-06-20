@@ -1,49 +1,50 @@
 <nav ng-include="'/partials/nav.html'"></nav>
 
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-12">
     
-    <h3>Add A New Employee</h3>
-    <div class="form-group">
-      <input type="text" ng-model="newEmployee.FirstNameE" class="form-control" placeholder="First Name">
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-employee.html'"></div>
     </div>
 
-    <div class="form-group">
-      <input type="text" ng-model="newEmployee.LastNameE" class="form-control" placeholder="Last Name">
-    </div>
+    <div class="col-md-4 col-md-offset-1 addItem">
+      <h3>Add A New Employee</h3>
+      <div class="form-group">
+        <input type="text" ng-model="newEmployee.FirstNameE" class="form-control" placeholder="First Name">
+      </div>
 
-    <div class="form-group">
-      <input type="text" ng-model="newEmployee.Username" class="form-control" placeholder="Username">
-    </div>
+      <div class="form-group">
+        <input type="text" ng-model="newEmployee.LastNameE" class="form-control" placeholder="Last Name">
+      </div>
 
-    <div class="form-group">
-      <input type="text" ng-model="newEmployee.EmailE" class="form-control" placeholder="Email Address">
-    </div>
+      <div class="form-group">
+        <input type="text" ng-model="newEmployee.Username" class="form-control" placeholder="Username">
+      </div>
 
-    <div class="form-group">
-      <input type="text" ng-model="newEmployee.PhoneE" class="form-control" placeholder="Phone Number">
-    </div>
+      <div class="form-group">
+        <input type="text" ng-model="newEmployee.EmailE" class="form-control" placeholder="Email Address">
+      </div>
 
-<!--     <select ng-model="selectedDepartment"
-            ng-options="emp.DepartmentName for emp in emp"
-            size="1">
-            <option disabled value="">Department</option>
-    </select> -->
-  
-  <select name="" id="selectDepartment">
-    <option value="" selected disabled="disabled">Department</option>
-    <option value="1">Support</option>
-    <option value="2">Design</option>
-    <option value="3">Development</option>
-  </select>  
+      <div class="form-group">
+        <input type="text" ng-model="newEmployee.PhoneE" class="form-control" placeholder="Phone Number">
+      </div>
 
-  
-
-    <br>
-    <button ng-click="addEmployee()">Add Employee</button>
-    <div>
+      <select id="selectDepartment"
+              ng-model="newEmployee.DepartmentId">
+        <option value="" selected disabled="disabled">Department</option>
+        <option value="1">Support</option>
+        <option value="2">Design</option>
+        <option value="3">Development</option>
+      </select>  
       <br>
-      <a href="#/employees">< Back to Employee List</a><br><br>
+      <button ng-click="addEmployee()">Add Employee</button>
+      <div>
+        <br>
+        <a href="#/employees">< Back to Employee List</a><br><br>
+      </div>
+
+
     </div>
+
   </div>
 </div>

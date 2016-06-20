@@ -4,9 +4,7 @@
   <div class="col-md-12">
     
     <div class="col-md-3 sideMenu">
-      
-      <a href="#/add-customer">New Customer</a>
-
+      <div ng-include="'/partials/menu-customer.html'"></div>
     </div>
 
     <div class="col-md-9 listItem">
@@ -14,6 +12,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
+            <th>ID #</th>
             <th>Company</th>
             <th>URL</th>
             <th>First Name</th>
@@ -22,10 +21,11 @@
         </thead>
         <tbody>
           <tr ng-repeat="cus in customers | orderBy: 'Company'">
-            <td>{{ cus.Company }}</td>
-            <td>{{ cus.URL }}</td>
-            <td>{{ cus.FirstNameC }}</td>
-            <td>{{ cus.LastNameC }}</td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.CustomerId }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.Company }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.URL }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.FirstNameC }}</a></td>
+            <td><a ng-click="detailCustomer(cus.CustomerId)">{{ cus.LastNameC }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -34,5 +34,3 @@
 
   </div>
 </div>
-
-

@@ -1,38 +1,33 @@
-<nav ng-include="'partials/nav.html'"></nav>
+<nav ng-include="'/partials/nav.html'"></nav>
 
 <div class="row">
-  <div class="col-md-3 sideMenu">
-      
-    <a href="#/add-employee">New Employee</a>
-    <br><br>
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-employee.html'"></div>
+    </div>
 
-    <button>All Employees</button><br>
-    <button>Support Team</button><br>
-    <button>Design Team</button><br>
-    <button>Development Team</button>
+    <div class="col-md-9 listItem">
 
-  </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID #</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="emp in employees | orderBy: 'EmployeeId'">
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.EmployeeId }}</a></td>
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.FirstNameE }}</a></td>
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.LastNameE }}</a></td>
+            <td><a ng-click="detailEmployee(emp.EmployeeId)">{{ emp.DepartmentName }}</a></td>
+          </tr>
+        </tbody>
+      </table>
 
-  <div class="col-md-9 listItem">
-
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>ID #</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Department</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="emp in employees | orderBy: 'EmployeeId'">
-          <td>{{ emp.EmployeeId }}</td>
-          <td>{{ emp.FirstNameE }}</td>
-          <td>{{ emp.LastNameE }}</td>
-          <td>{{ emp.DepartmentName }}</td>
-        </tr>
-      </tbody>
-    </table>
-
+    </div>
   </div>
 </div>
