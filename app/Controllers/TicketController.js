@@ -9,6 +9,7 @@ LiteSupport.controller('TicketController', [
 
     $scope.tickets = [];
     $scope.customers = [];
+    $scope.newTicket = {};
 
     // get ticket list
     $http
@@ -16,13 +17,11 @@ LiteSupport.controller('TicketController', [
       .success(tic => $scope.tickets = tic);
 
     // pull customer list to create new ticket
-    // $scope.customerList = function () {
       $http
       .get('http://localhost:5000/api/Customer')
       // .success(cus => console.log("cus", cus)); 
       .success(cus => $scope.customers = cus);    
-    // }
-
+    
     // view ticket details
     $scope.detailTicket = function (id) {
       console.log(id);
@@ -41,7 +40,7 @@ LiteSupport.controller('TicketController', [
       })
     }
 
-    // edit customer details
+    // edit ticket details
     $scope.editTicket = function (id) {
        // console.log(id);      
       $http({
@@ -56,7 +55,7 @@ LiteSupport.controller('TicketController', [
       })
     }
 
-    // save changes to edit customer
+    // save changes to edit ticket
     $scope.saveTicket = function (id) {
       // console.log("id", id);
       $http({
@@ -79,8 +78,32 @@ LiteSupport.controller('TicketController', [
       })
     };
 
+    
+    // add new ticket
+    $scope.addTicket = function () {
+      // console.log("Title", $scope.tic.Title);
+      $scope.tic.DateCreatedT = new Date();
 
-
+      $http({
+        url:'http://localhost:5000/api/Ticket',
+        method: 'POST',
+        data: JSON.stringify({
+            Title: $scope.tic.Title,
+            Description: $scope.tic.Description,
+            TtypeId: $scope.tic.TtypeId,
+            PriorityId: $scope.tic.PriorityId,
+            CustomerId: $scope.tic.CustomerId,
+            DateCreatedT: $scope.tic.DateCreatedT
+          })
+      })
+      .success(tic => console.log('201 Created', tic))
+      // .success( function(tic) {
+      //     $scope.$parent.tic = tic;        
+      // })
+      .then(function() {
+         $location.path("/tickets")
+      })
+    };
 
   }
 ]);
