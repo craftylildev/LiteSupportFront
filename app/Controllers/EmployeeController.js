@@ -93,9 +93,5 @@ LiteSupport.controller('EmployeeController', [
       })
     };
 
-
-//         headers: { "Content-Type" : "application/json"},
-
-
   }
 ]);
