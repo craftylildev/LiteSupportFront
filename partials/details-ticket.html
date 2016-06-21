@@ -1,0 +1,59 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-ticket.html'"></div>
+    </div>
+
+    <div class="col-md-9 detailItem">
+      <div class="backBtn">
+        <br>
+        <a href="#/tickets">< Back to Ticket List</a><br><br>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="col-md-6">
+
+            <h3>Ticket ID: #{{ tic.TicketId }}</h3>
+            <ul>  
+              <li><span>Title: </span>{{ tic.Title }}</li>
+              <li><span>Type: </span>{{ tic.TtypeName }}</li>
+              <li><span>Priority: </span>{{ tic.PriorityName }}</li>
+              <li><span>Created: </span>{{ tic.DateCreatedT }}</li>
+              
+              <li><span>Description: </span>{{ tic.Description }}</li>
+            </ul>
+            <!-- <button ng-click="editTicket(tic.TicketId)">Edit Ticket</button> -->
+                  
+          </div>
+
+
+          <div class="col-md-6">
+
+            <h3>Customer ID: #{{ tic.CustomerId }}</h3>
+            <ul>  
+              <li><span>Name: </span>{{ tic.FirstNameC }} {{ tic.LastNameC }}</li>
+              <li><span>Company: </span>{{ tic.Company }}</li>
+              <li><span>Phone: </span>{{ tic.PhoneC }}</li>
+              <li><span>Website: </span><a href="{{ tic.URL }}" target="_blank">{{ tic.URL }}</a></li>
+              <li><span>Email: </span><a href="mailto:'{{ tic.EmailC }}'">{{ tic.EmailC }}</a></li>            
+            </ul>
+
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>

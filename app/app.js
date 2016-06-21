@@ -12,6 +12,18 @@ LiteSupport.config(['$routeProvider',
         templateUrl: 'partials/tickets.html',
         controller: 'TicketController'
       })
+      .when('/add-ticket', {
+        templateUrl: 'partials/add-ticket.html',
+        controller: 'TicketController'
+      })
+      .when('/details-ticket', {
+        templateUrl: 'partials/details-ticket.html',
+        controller: 'TicketController'
+      })
+      .when('/edit-ticket', {
+        templateUrl: 'partials/edit-ticket.html',
+        controller: 'TicketController'
+      })
       .when('/employees', {
         templateUrl: 'partials/employees.html',
         controller: 'EmployeeController'
