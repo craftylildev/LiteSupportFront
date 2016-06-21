@@ -1,0 +1,51 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-ticket.html'"></div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-1 addItem">
+      <h3>Add A New Ticket</h3>
+      
+      <div class="form-group">
+        <input type="text" ng-model="tic.Title" class="form-control" placeholder="Title">
+      </div>
+
+      <div class="form-group">
+        <input type="textarea" ng-model="tic.Description" class="form-control" placeholder="Title">
+      </div>
+      
+      <select ng-model="tic.CustomerId"
+
+              ng-options="customers.Company for customers in customers">
+        <option value="" selected disabled="disabled">Customer Company</option>
+        <option value="customers.CustomerId">{{ customers.Company }}</option>
+      </select>  
+                 <!-- ng-options="customers as cus.Company for cus in customers track by cus.CustomerId">-->
+
+
+      <label>Type: </label>
+      <input ng-model="tic.TtypeId" type="radio" name="dept-type" value="1"> Bug Fix
+      <input ng-model="tic.TtypeId" type="radio" name="dept-type" value="2"> Design Request
+      <br>
+      
+      <label>Priority: </label>
+      <input ng-model="tic.PriorityId" type="radio" name="prio-type" value="1"> Low
+      <input ng-model="tic.PriorityId" type="radio" name="prio-type" value="2"> Medium
+      <input ng-model="tic.PriorityId" type="radio" name="prio-type" value="2"> High
+      <br>
+
+
+
+      <button ng-click="addTicket()">Add Ticket</button>
+      <div class="backBtn">
+        <br>
+        <a href="#/tickets">< Back to Ticket List</a><br><br>
+      </div>
+    </div>
+
+  </div>
+</div>
