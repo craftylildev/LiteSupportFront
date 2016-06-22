@@ -18,10 +18,10 @@
         <input type="textarea" ng-model="tic.Description" class="form-control" placeholder="Description">
       </div>
       
-      <select ng-model="tic.CustomerId"
+      <select ng-model="tic.Customer"
               ng-options="customers.Company for customers in customers track by customers.CustomerId">
         <option value="" selected disabled="disabled">Customer Company Name</option>
-        <option value="">{{ customers.Company }}</option>
+        <option value="{{ customers.CustomerId }}">{{ customers.Company }}</option>
       </select>  
 
       <label>Type: </label>
@@ -34,6 +34,7 @@
       <input ng-model="tic.PriorityId" type="radio" name="prio-type" value="2"> Medium
       <input ng-model="tic.PriorityId" type="radio" name="prio-type" value="2"> High
       <br>
+      <!-- <span ng-model="tic.DateCreatedT" class="date"></span> -->
 
       <button ng-click="addTicket()">Add Ticket</button>
       <div class="backBtn">

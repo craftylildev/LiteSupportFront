@@ -82,7 +82,14 @@ LiteSupport.controller('TicketController', [
     // add new ticket
     $scope.addTicket = function () {
       // console.log("Title", $scope.tic.Title);
-      $scope.tic.DateCreatedT = new Date();
+      var DateCreatedT = new Date();
+      // $scope.tic.DateCreatedT = "06/20/2016";
+      console.log("date", $scope.tic.DateCreatedT);
+
+      // console.log("$scope.tic.Customer.CustomerId", $scope.tic.Customer.CustomerId);
+
+      // console.log("$scope.tic.CustomerId", $scope.tic.CustomerId);
+
 
       $http({
         url:'http://localhost:5000/api/Ticket',
@@ -92,11 +99,16 @@ LiteSupport.controller('TicketController', [
             Description: $scope.tic.Description,
             TtypeId: $scope.tic.TtypeId,
             PriorityId: $scope.tic.PriorityId,
-            CustomerId: $scope.tic.CustomerId,
-            DateCreatedT: $scope.tic.DateCreatedT
+            CustomerId: $scope.tic.Customer.CustomerId,
+            DateCreatedT: DateCreatedT,
+            Customer: null,
+            Priority: null,
+            Ttype: null,
+            Comments: null
           })
       })
-      .success(tic => console.log('201 Created', tic))
+      .error(tic => console.log('FAIL', tic))
+      // .success(tic => console.log('201 Created', tic))
       // .success( function(tic) {
       //     $scope.$parent.tic = tic;        
       // })
