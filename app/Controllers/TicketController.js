@@ -9,7 +9,7 @@ LiteSupport.controller('TicketController', [
 
     $scope.tickets = [];
     $scope.customers = [];
-    $scope.newTicket = {};
+    // $scope.newTicket = {};
 
     // get ticket list
     $http
@@ -17,20 +17,22 @@ LiteSupport.controller('TicketController', [
       .success(tic => $scope.tickets = tic);
 
     // pull customer list to create new ticket
-      $http
+    $http
       .get('http://localhost:5000/api/Customer')
       // .success(cus => console.log("cus", cus)); 
       .success(cus => $scope.customers = cus);    
     
+    // $scope.TestList = ["asd", "fgh","rty"];
     // view ticket details
     $scope.detailTicket = function (id) {
-      // console.log(id);
+      console.log(id);
       $http({
         method: 'GET',
         url:`http://localhost:5000/api/Ticket/${id}`
       })
       .success( function(tic) {
-        $scope.$parent.tic = tic[0];        
+        $scope.$parent.tic = tic[0];
+        $scope.$parent.CommentList = tic[0].Comment;
       })
       .then(function() {
         $location.path("/details-ticket")
@@ -44,7 +46,7 @@ LiteSupport.controller('TicketController', [
         url:`http://localhost:5000/api/Ticket/${id}`
       })
       .success( function(tic) {
-        $scope.$parent.tic = tic[0];        
+        $scope.$parent.tic = tic[0];     
       })
       .then(function() {
         $location.path("/edit-ticket")

@@ -13,12 +13,10 @@
         <a href="#/tickets">< Back to Ticket List</a><br><br>
       </div>
 
-
       <div class="row">
         <div class="col-md-12">
 
           <div class="col-md-6">
-
             <h3>Ticket ID: #{{ tic.TicketId }}</h3>
             <ul>  
               <li><span>Title: </span>{{ tic.Title }}</li>
@@ -29,12 +27,9 @@
               <li><span>Description: </span>{{ tic.Description }}</li>
             </ul>
             <button ng-click="editTicket(tic.TicketId)">Edit Ticket</button>
-                  
           </div>
 
-
           <div class="col-md-6">
-
             <h3>Customer ID: #{{ tic.CustomerId }}</h3>
             <ul>  
               <li><span>Name: </span>{{ tic.FirstNameC }} {{ tic.LastNameC }}</li>
@@ -43,17 +38,39 @@
               <li><span>Website: </span><a href="{{ tic.URL }}" target="_blank">{{ tic.URL }}</a></li>
               <li><span>Email: </span><a href="mailto:'{{ tic.EmailC }}'">{{ tic.EmailC }}</a></li>            
             </ul>
-
           </div>
-
-
 
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-12">
+        <h3>Comments:</h3>
 
+            <div ng-repeat="com in CommentList">
+            
+              <div class="row">
+                <div class="col-md-12">
+                    {{ com.CommentMsg }}
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <span>Created: </span>{{ com.DateCreatedC | date: 'short'}}
+                </div>
+                <div class="col-md-6">
+                  <span>Created By: </span>{{ com.FirstNameE }} {{com.LastNameE }}
+                </div>
+              </div>
+              <br>
+            </div>
 
+      </div>
     </div>
+
+
+    </div> <!-- end detailItem col9-->
 
   </div>
 </div>
