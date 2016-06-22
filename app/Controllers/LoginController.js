@@ -1,5 +1,5 @@
 "use strict";
-console.log("test");
+// console.log("test");
 LiteSupport.controller('LoginController', [
   '$http', 
   '$scope',

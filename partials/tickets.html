@@ -4,15 +4,9 @@
   <div class="col-md-12">
     
     <div class="col-md-3 sideMenu">
-    
-      <button>New Ticket</button>
-      <br><br>
-      <button>All Tickets</button><br>
-      <button>Open Tickets</button><br>
-      <button>Closed Tickets</button>
-
+      <div ng-include="'/partials/menu-ticket.html'"></div>
     </div>
-
+    
     <div class="col-md-9 listItem">
 
       <table class="table table-hover">
@@ -27,11 +21,11 @@
         </thead>
         <tbody>
           <tr ng-repeat="tic in tickets | orderBy: 'TicketId'">
-            <td>{{ tic.TicketId }}</td>
-            <td>{{ tic.Title }}</td>
-            <td>{{ tic.Company }}</td>
-            <td>{{ tic.DateCreated }}</td>
-            <td>{{ tic.Priority }}</td>
+            <td><a ng-click="detailTicket(tic.TicketId)">{{ tic.TicketId }}</a></td>
+            <td><a ng-click="detailTicket(tic.TicketId)">{{ tic.Title }}</a></td>
+            <td><a ng-click="detailTicket(tic.TicketId)">{{ tic.Company }}</a></td>
+            <td><a ng-click="detailTicket(tic.TicketId)">{{ tic.DateCreatedT }}</a></td>
+            <td><a ng-click="detailTicket(tic.TicketId)">{{ tic.PriorityName }}</a></td>
           </tr>
         </tbody>
       </table>
