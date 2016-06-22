@@ -24,25 +24,21 @@ LiteSupport.controller('TicketController', [
     
     // view ticket details
     $scope.detailTicket = function (id) {
-      console.log(id);
+      // console.log(id);
       $http({
         method: 'GET',
         url:`http://localhost:5000/api/Ticket/${id}`
       })
       .success( function(tic) {
         $scope.$parent.tic = tic[0];        
-        console.log("$scope.$parent.tic", $scope.$parent.tic);
       })
       .then(function() {
         $location.path("/details-ticket")
-        console.log("$scope.$parent.tic-2", $scope.$parent.tic);
-
       })
     }
 
     // edit ticket details
     $scope.editTicket = function (id) {
-       // console.log(id);      
       $http({
         method: 'GET',
         url:`http://localhost:5000/api/Ticket/${id}`
@@ -57,7 +53,6 @@ LiteSupport.controller('TicketController', [
 
     // save changes to edit ticket
     $scope.saveTicket = function (id) {
-      // console.log("id", id);
       $http({
         url:`http://localhost:5000/api/Ticket/${id}`,
         method: 'PUT',
@@ -67,7 +62,7 @@ LiteSupport.controller('TicketController', [
             Description: $scope.tic.Description,
             TtypeId: $scope.tic.TtypeId,
             PriorityId: $scope.tic.PriorityId,
-            CustomerId: $scope.tic.CustomerId
+            CustomerId: $scope.tic.Customer.CustomerId
          })
       })
       .success( function(tic) {
@@ -81,15 +76,8 @@ LiteSupport.controller('TicketController', [
     
     // add new ticket
     $scope.addTicket = function () {
-      // console.log("Title", $scope.tic.Title);
+
       var DateCreatedT = new Date();
-      // $scope.tic.DateCreatedT = "06/20/2016";
-      console.log("date", $scope.tic.DateCreatedT);
-
-      // console.log("$scope.tic.Customer.CustomerId", $scope.tic.Customer.CustomerId);
-
-      // console.log("$scope.tic.CustomerId", $scope.tic.CustomerId);
-
 
       $http({
         url:'http://localhost:5000/api/Ticket',
@@ -107,11 +95,8 @@ LiteSupport.controller('TicketController', [
             Comments: null
           })
       })
-      .error(tic => console.log('FAIL', tic))
-      // .success(tic => console.log('201 Created', tic))
-      // .success( function(tic) {
-      //     $scope.$parent.tic = tic;        
-      // })
+      // .error(tic => console.log('FAIL', tic))
+      .success(tic => console.log('201 Created', tic))
       .then(function() {
          $location.path("/tickets")
       })

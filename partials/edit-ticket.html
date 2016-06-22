@@ -15,9 +15,16 @@
       </div>
 
       <div class="form-group">
-        <input type="textarea" ng-model="tic.Description" class="form-control" placeholder="Title">
+        <textarea type="text" ng-model="tic.Description" class="form-control" placeholder="Description"></textarea>
       </div>
 
+      <select ng-model="tic.Customer"
+              ng-options="customers.Company for customers in customers track by customers.CustomerId">
+        <option value="" selected disabled="disabled">Customer Company Name</option>
+        <option value="">{{ customers.Company }}</option>
+      </select>  
+      <br>
+      
       <label>Type: </label>
       <input ng-model="tic.TtypeId" type="radio" name="dept-type" value="1"> Bug Fix
       <input ng-model="tic.TtypeId" type="radio" name="dept-type" value="2"> Design Request

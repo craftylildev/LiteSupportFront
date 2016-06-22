@@ -24,7 +24,7 @@
               <li><span>Title: </span>{{ tic.Title }}</li>
               <li><span>Type: </span>{{ tic.TtypeName }}</li>
               <li><span>Priority: </span>{{ tic.PriorityName }}</li>
-              <li><span>Created: </span>{{ tic.DateCreatedT }}</li>
+              <li><span>Created: </span>{{ tic.DateCreatedT | date : 'short'}}</li>
               
               <li><span>Description: </span>{{ tic.Description }}</li>
             </ul>
