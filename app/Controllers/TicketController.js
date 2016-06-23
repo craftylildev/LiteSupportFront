@@ -4,8 +4,9 @@ LiteSupport.controller('TicketController', [
   '$http', 
   '$scope',
   '$location',
+  '$route',
 
-  function ($http, $scope, $location) {
+  function ($http, $scope, $location, $route) {
 
     $scope.tickets = [];
     $scope.customers = [];
@@ -64,6 +65,8 @@ LiteSupport.controller('TicketController', [
 
     // save changes to edit ticket
     $scope.saveTicket = function (id) {
+      var DateCreatedT = new Date();
+
       $http({
         url:`http://localhost:5000/api/Ticket/${id}`,
         method: 'PUT',
@@ -73,14 +76,15 @@ LiteSupport.controller('TicketController', [
             Description: $scope.tic.Description,
             TtypeId: $scope.tic.TtypeId,
             PriorityId: $scope.tic.PriorityId,
-            CustomerId: $scope.tic.Customer.CustomerId
+            CustomerId: $scope.tic.Customer.CustomerId,
+            DateCreatedT: DateCreatedT
          })
       })
       .success( function(tic) {
           $scope.$parent.tic = tic;        
       })
       .then(function() {
-         $location.path(`/details-ticket/${id}`)
+         $location.path("/tickets")
       })
     };
 
@@ -131,8 +135,16 @@ LiteSupport.controller('TicketController', [
     }
 
     // delete comment
-    $scope.deleteComment = function () {
-      
+    $scope.deleteComment = function (id) {
+      console.log("id", id);
+      // console.log("com.CommentId", com.CommentId);
+    $http({
+        method: 'DELETE',
+        url:`http://localhost:5000/api/Comment/${id}`
+      }).
+    then(function() {
+        $location.path("/tickets")
+      })
     };
 
   }
