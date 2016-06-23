@@ -48,7 +48,7 @@
         <h3>Comments:</h3>
 
             <div ng-repeat="com in CommentList">
-            
+              <button ng-click="deleteComment(com.CommentId)">X</button>
               <div class="row">
                 <div class="col-md-12">
                     {{ com.CommentMsg }}
@@ -66,6 +66,7 @@
               <br>
             </div>
 
+            <button ng-click="addComment(tic.TicketId)">Add Comment</button>
       </div>
     </div>
 
