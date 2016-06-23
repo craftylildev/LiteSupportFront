@@ -4,12 +4,12 @@ LiteSupport.controller('TicketController', [
   '$http', 
   '$scope',
   '$location',
+  '$route',
 
-  function ($http, $scope, $location) {
+  function ($http, $scope, $location, $route) {
 
     $scope.tickets = [];
     $scope.customers = [];
-    // $scope.newTicket = {};
 
     // get ticket list
     $http
@@ -20,12 +20,22 @@ LiteSupport.controller('TicketController', [
     $http
       .get('http://localhost:5000/api/Customer')
       // .success(cus => console.log("cus", cus)); 
-      .success(cus => $scope.customers = cus);    
-    
-    // $scope.TestList = ["asd", "fgh","rty"];
+      .success(cus => $scope.customers = cus);   
+
+    // pull comment list to create new comment
+    $http
+      .get('http://localhost:5000/api/Comment')
+      // .success(com => console.log("com", com)); 
+      .success(com => $scope.comments = com);   
+
+    $http
+      .get('http://localhost:5000/api/Employee')
+      // .success(emp => console.log("emp", emp)); 
+      .success(emp => $scope.employees = emp);   
+
     // view ticket details
     $scope.detailTicket = function (id) {
-      console.log(id);
+      // console.log(id);
       $http({
         method: 'GET',
         url:`http://localhost:5000/api/Ticket/${id}`
@@ -55,6 +65,8 @@ LiteSupport.controller('TicketController', [
 
     // save changes to edit ticket
     $scope.saveTicket = function (id) {
+      var DateCreatedT = new Date();
+
       $http({
         url:`http://localhost:5000/api/Ticket/${id}`,
         method: 'PUT',
@@ -64,14 +76,15 @@ LiteSupport.controller('TicketController', [
             Description: $scope.tic.Description,
             TtypeId: $scope.tic.TtypeId,
             PriorityId: $scope.tic.PriorityId,
-            CustomerId: $scope.tic.Customer.CustomerId
+            CustomerId: $scope.tic.Customer.CustomerId,
+            DateCreatedT: DateCreatedT
          })
       })
       .success( function(tic) {
           $scope.$parent.tic = tic;        
       })
       .then(function() {
-         $location.path(`/details-ticket/${id}`)
+         $location.path("/tickets")
       })
     };
 
@@ -101,6 +114,36 @@ LiteSupport.controller('TicketController', [
       .success(tic => console.log('201 Created', tic))
       .then(function() {
          $location.path("/tickets")
+      })
+    };
+
+/////////////////
+// ticket comments
+/////////////////
+
+    $scope.addComment = function (id) {
+      $http({
+        method: 'GET',
+        url:`http://localhost:5000/api/Ticket/${id}`
+      })
+      .success( function(tic) {
+        $scope.$parent.tic = tic[0];   
+      })
+      .then(function() {
+        $location.path("/add-comment")
+      })
+    }
+
+    // delete comment
+    $scope.deleteComment = function (id) {
+      console.log("id", id);
+      // console.log("com.CommentId", com.CommentId);
+    $http({
+        method: 'DELETE',
+        url:`http://localhost:5000/api/Comment/${id}`
+      }).
+    then(function() {
+        $location.path("/tickets")
       })
     };
 

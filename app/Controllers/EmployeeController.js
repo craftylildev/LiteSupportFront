@@ -20,6 +20,7 @@ LiteSupport.controller('EmployeeController', [
 
     // add new employee
     $scope.addEmployee = function () {
+      console.log("test");
       $http({
         url:'http://localhost:5000/api/Employee',
         method: 'POST',
@@ -33,6 +34,7 @@ LiteSupport.controller('EmployeeController', [
           })
       })
       .success(emp => console.log('201 Created', emp))
+      // .error(emp => console.log('FAIL', emp))
       .then(function() {
          $location.path("/employees")
       })

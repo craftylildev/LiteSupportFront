@@ -1,0 +1,32 @@
+<nav ng-include="'/partials/nav.html'"></nav>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="col-md-3 sideMenu">
+      <div ng-include="'/partials/menu-ticket.html'"></div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-1 addItem">
+      <h3>Add A New Comment</h3>
+      <p>For Ticket #{{tic.TicketId}} | {{tic.Company}}</p>
+      <div class="form-group">
+        <textarea type="text" ng-model="tic.CommentMsg" class="form-control" placeholder="Add Comment"></textarea>
+      </div>
+
+      <select ng-model="tic.Comment"
+              ng-options="employees.LastNameE for employees in employees track by employees.EmployeeId">
+        <option value="" selected disabled="disabled">Employee Name</option>
+        <option value="">{{ emp.LastNameE }}, {{ emp.FirstNameE }}</option>
+      </select>  
+      <br>
+
+      <button ng-click="saveComment(tic.TicketId)">Add Comment</button>
+      <div class="backBtn">
+        <br>
+        <a href="#/tickets">< Back to Ticket List</a><br><br>
+      </div>
+    </div>
+
+  </div>
+</div>
