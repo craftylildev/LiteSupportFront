@@ -47,28 +47,27 @@
         <div class="col-md-12">
         <h3>Comments:</h3>
 
-            <div ng-repeat="com in CommentList">
-              <button ng-click="deleteComment(com.CommentId)">X</button>
+            <div ng-repeat="com in CommentList" class="oneComment">    
               <div class="row">
-                <div class="col-md-12">
-                    {{ com.CommentMsg }}
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3 commentDetails">
+                  <span>Created By: </span>{{ com.FirstNameE }} {{com.LastNameE }}
+                  <br>
                   <span>Created: </span>{{ com.DateCreatedC | date: 'short'}}
                 </div>
-                <div class="col-md-6">
-                  <span>Created By: </span>{{ com.FirstNameE }} {{com.LastNameE }}
+
+                <div class="col-md-8">
+                  {{ com.CommentMsg }}
+                </div>
+
+                <div class="col-md-1">
+                  <button ng-click="deleteComment(com.CommentId)" class="deleteCom">X</button>
                 </div>
               </div>
-              <br>
-            </div>
 
-            <button ng-click="addComment(tic.TicketId)">Add Comment</button>
+            </div>
+          <button ng-click="addComment(tic.TicketId)" class="addButton">Add Comment</button>
+        </div>
       </div>
-    </div>
 
 
     </div> <!-- end detailItem col9-->

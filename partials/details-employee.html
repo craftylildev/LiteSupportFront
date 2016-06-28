@@ -12,7 +12,7 @@
         <ul>  
           <li><span>Name: </span>{{ $parent.emp.FirstNameE }} {{ emp.LastNameE }}</li>
           <li><span>Username: </span>{{ emp.Username }}</li>
-          <li><span>Email: </span>{{ emp.EmailE }}</li>
+          <li><span>Email: </span><a href="mailto:'{{ emp.EmailE }}'">{{ emp.EmailE }}</a></li>
           <li><span>Phone: </span>{{ emp.PhoneE }}</li>
           <li><span>Department: </span>{{ emp.DepartmentName }}</li>
         </ul>
